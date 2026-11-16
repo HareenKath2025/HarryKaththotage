@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galileo vs Starlink · Toulouse sky live | Harry Kaththotage</title>
+  <meta name="description" content="Live 3D comparison of Galileo (MEO) and Starlink (LEO) as seen from Toulouse, with ECEF and ICRF reference frames." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.147.0/Build/Cesium/Widgets/widgets.css" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body class="viewer-page">
+  <nav class="nav">
+    <a class="brand" href="../../"><span class="monogram">HK</span>Harry Kaththotage</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a class="active" href="../../#projects"><span class="num">01</span>Projects</a></li>
+      <li><a href="../../#about"><span class="num">02</span>About</a></li>
+      <li><a href="../../#skills"><span class="num">03</span>Skills</a></li>
+      <li><a href="../../#contact"><span class="num">04</span>Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="stage">
+    <div id="cesium"></div>
+
+    <div id="loading" class="loading"><div class="spinner"></div><span id="loadingText">Fetching live orbits from CelesTrak…</span></div>
+
+    <!-- ============ Control panel ============ -->
+    <aside class="panel" id="panel">
+      <button class="panel-collapse" id="panelCollapse" aria-label="Collapse panel">‹</button>
+      <h1 class="panel-title">Galileo vs Starlink <span>Toulouse sky · live</span></h1>
+
+      <div class="row">
+        <button class="pill-btn" id="playBtn">❚❚ Pause</button>
+        <label class="lbl" for="speed">Speed</label>
+        <select id="speed">
+          <option value="1">×1 (real time)</option>
+          <option value="10">×10</option>
+          <option value="60" selected>×60 (1 min/s)</option>
+          <option value="300">×300 (5 min/s)</option>
+          <option value="1800">×1800 (30 min/s)</option>
+        </select>
+        <button class="pill-btn" id="nowBtn">Now</button>
+      </div>
+
+      <div class="mono clock">UTC <b id="utc">—</b></div>
+      <div class="mono small" id="dataInfo">—</div>
+
+      <div class="frame-toggle" role="group" aria-label="Reference frame">
+        <button id="frameEcef" class="on">Earth-fixed<small>ECEF</small></button>
+        <button id="frameIcrf">Inertial<small>ICRF</small></button>
+      </div>
+      <p class="small frame-note" id="frameNote"></p>
+
+      <div class="counts">
+        <div class="count gal"><b id="galCount">–</b><span>Galileo above 10°</span></div>
+        <div class="count sl"><b id="slCount">–</b><span>Starlink above 10°</span></div>
+      </div>
+      <p class="small muted" id="slExtrap"></p>
+
+      <div class="row">
+        <label class="lbl" for="slN">Starlink sample</label>
+        <select id="slN">
+          <option value="30">30 sats</option>
+          <option value="60" selected>60 sats</option>
+          <option value="120">120 sats</option>
+          <option value="240">240 sats</option>
+        </select>
+      </div>
+
+      <details open>
+        <summary>Tracked satellites</summary>
+        <p class="small muted">Click any dot on the globe to track it (max 2 per constellation).</p>
+        <div id="focusList"></div>
+      </details>
+
+      <details>
+        <summary>What am I looking at?</summary>
+        <div class="small explain">
+          <p><b style="color:var(--galileo)">Galileo</b> is Europe's GNSS: about 30 satellites in medium Earth orbit
+            (~23,222 km altitude, 56° inclination, 3 orbital planes). Each orbit takes ~14 h 05 min, so from Toulouse
+            a Galileo satellite stays in view for hours, and 6–10 of them are usually above the mask.</p>
+          <p><b style="color:var(--starlink)">Starlink</b> satellites fly in low Earth orbit (~480–560 km), circling
+            the Earth in ~95 min. A single pass over Toulouse lasts only minutes, so coverage needs thousands of them.
+            Only a sample is drawn here; the count is scaled up to estimate the full fleet.</p>
+          <p><b>ECEF</b> (Earth-Centred, Earth-Fixed) rotates with the Earth. It's the frame GNSS receivers output and
+            the one your position is expressed in. Orbits drawn in it twist into loops because the ground turns underneath.</p>
+          <p><b>ICRF</b> (International Celestial Reference Frame) is fixed with respect to distant quasars. Here the
+            orbits are clean ellipses, the stars stand still, and the Earth spins inside them. Orbit dynamics live
+            in this frame.</p>
+          <p class="muted">Implementation: SGP4 (satellite.js) outputs TEME coordinates. These are rotated to ECEF using
+            GMST. The inertial view uses TEME-of-date as a stand-in for ICRF; the two differ by precession/nutation
+            (≈0.4° in 2026), which is invisible at this scale. Elevation mask: 10°. Observer: Toulouse
+            Capitole, 43.6045° N, 1.4440° E.</p>
+        </div>
+      </details>
+    </aside>
+
+    <!-- ============ Sky plot ============ -->
+    <aside class="skyplot" id="skyplot">
+      <details open>
+        <summary>Toulouse sky</summary>
+        <canvas id="sky" width="240" height="240"></canvas>
+        <div class="legend small"><i class="dot gal"></i>Galileo <i class="dot sl"></i>Starlink <i class="ring"></i>10° mask</div>
+        <div class="small mono" id="skyNote">—</div>
+      </details>
+    </aside>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/cesium@1.147.0/Build/Cesium/Cesium.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/satellite.js@5.0.0/dist/satellite.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

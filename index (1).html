@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harry Kaththotage | V&amp;V Engineering Leader</title>
+  <meta name="description" content="Harry Kaththotage, P.Eng, MBA: verification &amp; validation leader across aerospace, naval and EV battery systems, heading for space." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050b1a'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='700' fill='%236ea8ff' text-anchor='middle'%3EHK%3C/text%3E%3C/svg%3E" />
+</head>
+<body id="top">
+  <div class="stars" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <a class="brand" href="#top"><span class="monogram">HK</span>Harry Kaththotage</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="#projects"><span class="num">01</span>Projects</a></li>
+      <li><a href="#about"><span class="num">02</span>About</a></li>
+      <li><a href="#skills"><span class="num">03</span>Skills</a></li>
+      <li><a href="#contact"><span class="num">04</span>Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+      <p class="eyebrow">// P.Eng · MBA · Verification &amp; Validation</p>
+      <h1>Harry Kaththotage
+        <span class="dim">From aircraft engines to orbit: proving complex systems do what they must.</span>
+      </h1>
+      <p class="lead">
+        V&amp;V engineering leader with 14+ years across aerospace propulsion, naval combat systems
+        and high-voltage EV batteries. I build the evidence that a system meets its requirements:
+        test strategy, rigs, traceability and the data analysis behind it. Next stop: space and GNSS.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="projects/galileo-starlink-toulouse/">▶ Launch live satellite demo</a>
+        <a class="btn" href="#about">About me</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>14+</b><span>years in V&amp;V</span></div>
+        <div class="stat"><b>3</b><span>industries: air · sea · EV</span></div>
+        <div class="stat"><b>EN / FR</b><span>bilingual</span></div>
+      </div>
+    </header>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects">
+      <div class="section-head"><span class="num">01</span><h2>Projects</h2></div>
+
+      <article class="project">
+        <a class="project-visual" href="projects/galileo-starlink-toulouse/" aria-label="Open the Galileo vs Starlink demo">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <defs>
+              <radialGradient id="earth" cx="40%" cy="38%"><stop offset="0" stop-color="#3a7bd5"/><stop offset="1" stop-color="#0b2a5a"/></radialGradient>
+            </defs>
+            <ellipse cx="200" cy="150" rx="170" ry="70" fill="none" stroke="#4cc9f0" stroke-opacity=".7" stroke-width="1.4" transform="rotate(-24 200 150)"/>
+            <ellipse cx="200" cy="150" rx="160" ry="95" fill="none" stroke="#2f7fd1" stroke-opacity=".6" stroke-width="1.2" transform="rotate(30 200 150)"/>
+            <circle cx="200" cy="150" r="48" fill="url(#earth)"/>
+            <circle cx="200" cy="150" r="58" fill="none" stroke="#ff7a59" stroke-opacity=".8" stroke-width="1.3"/>
+            <circle cx="200" cy="150" r="61" fill="none" stroke="#ff5a5f" stroke-opacity=".45" stroke-width="1" stroke-dasharray="3 4"/>
+            <circle cx="186" cy="132" r="3.5" fill="#fff"/>
+            <text x="166" y="126" fill="#e6edf8" font-size="10" font-family="monospace">TLS</text>
+            <circle cx="42" cy="196" r="5" fill="#4cc9f0"/><circle cx="330" cy="72" r="5" fill="#2f7fd1"/>
+            <circle cx="255" cy="166" r="4" fill="#ff7a59"/>
+            <line x1="186" y1="132" x2="330" y2="72" stroke="#7ee2a8" stroke-width="1" stroke-dasharray="4 3"/>
+          </svg>
+        </a>
+        <div class="project-body">
+          <span class="badge-live">LIVE · real-time orbital data</span>
+          <h3>Galileo vs Starlink: the Toulouse sky in real time</h3>
+          <p>
+            An interactive 3D globe comparing Europe's Galileo navigation constellation (MEO, ~23,200 km)
+            with SpaceX's Starlink (LEO, ~550 km), as seen from Toulouse. Orbits come from live CelesTrak
+            data, propagated in the browser with SGP4.
+          </p>
+          <ul class="points">
+            <li>Switch the view between the <b>ECEF</b> (Earth-fixed) and <b>ICRF</b> (inertial) reference frames</li>
+            <li>Live azimuth/elevation sky plot for Toulouse with a 10° elevation mask</li>
+            <li>Lines of sight to every visible satellite, plus a count of how many are in view</li>
+          </ul>
+          <ul class="tags">
+            <li>CesiumJS</li><li>SGP4 · satellite.js</li><li>CelesTrak GP</li><li>ECEF ↔ ICRF</li><li>GNSS / PNT</li>
+          </ul>
+          <div class="cta" style="margin-top:.4rem">
+            <a class="btn primary" href="projects/galileo-starlink-toulouse/">Open live demo →</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+      <div class="section-head"><span class="num">02</span><h2>About</h2></div>
+      <div class="about-grid">
+        <div>
+          <p>
+            I'm a Professional Engineer (P.Eng, British Columbia) and Simon Fraser University MBA based in
+            Bordeaux, France. My career has been about one question: <em>how do we know it works?</em>
+          </p>
+          <p>
+            I started in aerospace propulsion maintenance, repair and overhaul, moved to validating naval
+            combat systems, and today lead verification &amp; validation for a high-voltage traction battery
+            programme at Automotive Cell Company (ACC). Along the way I've run requirements-to-evidence
+            traceability through PDR, CDR and FDR gates, and built SIL, HIL and flatsat-style test environments.
+          </p>
+          <p>
+            I'm now steering that experience toward the space sector: satellite navigation, orbital
+            mechanics and PNT. The projects here are part of that journey.
+          </p>
+        </div>
+        <ol class="timeline">
+          <li><span class="when">NOW</span><b>V&amp;V Leader, Automotive Cell Company (ACC)</b><span>HV traction battery programme · team lead · Bordeaux</span></li>
+          <li><span class="when">EARLIER</span><b>Naval combat systems validation</b><span>System-level validation and test evidence</span></li>
+          <li><span class="when">EARLIER</span><b>Aerospace propulsion MRO</b><span>Engine maintenance, repair &amp; overhaul under aerospace standards</span></li>
+          <li class="next"><span class="when">NEXT</span><b>Space · GNSS · PNT</b><span>Satellite navigation and orbital systems V&amp;V</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills">
+      <div class="section-head"><span class="num">03</span><h2>Skills</h2></div>
+      <div class="skills">
+        <div class="skill-card">
+          <h3><span class="num">A</span>Verification &amp; Validation</h3>
+          <ul>
+            <li>V&amp;V strategy and test planning</li>
+            <li>Requirements traceability (VCD)</li>
+            <li>PDR / CDR / FDR gate evidence</li>
+            <li>SIL, HIL &amp; flatsat test benches</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3><span class="num">B</span>Standards &amp; Certification</h3>
+          <ul>
+            <li>ARP 4754A (development assurance)</li>
+            <li>DO-254 (airborne electronic hardware)</li>
+            <li>Safety-critical systems engineering</li>
+            <li>HV battery system validation</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3><span class="num">C</span>Space &amp; GNSS</h3>
+          <ul>
+            <li>GNSS / PNT fundamentals</li>
+            <li>Orbital mechanics, TLE &amp; SGP4</li>
+            <li>Reference frames: ECEF, ECI, ICRF</li>
+            <li>Visibility &amp; sky-plot analysis</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3><span class="num">D</span>Data &amp; Leadership</h3>
+          <ul>
+            <li>Python for test-data analysis &amp; validation</li>
+            <li>Engineering team leadership</li>
+            <li>MBA: programme &amp; business acumen</li>
+            <li>English / French</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="contact">
+      <div class="section-head"><span class="num">04</span><h2>Contact</h2></div>
+      <p>Open to conversations about V&amp;V, GNSS and space-sector roles. The quickest way to reach me:</p>
+      <div class="cta">
+        <!-- TODO: replace with your real email and LinkedIn URL -->
+        <a class="btn primary" href="mailto:you@example.com">✉ Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/your-profile/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Harry Kaththotage · Built with CesiumJS &amp; satellite.js</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.addEventListener('click', e => { if (e.target.closest('a')) links.classList.remove('open'); });
+    // highlight current section in nav
+    const navAnchors = [...links.querySelectorAll('a')];
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+  </script>
+</body>
+</html>
